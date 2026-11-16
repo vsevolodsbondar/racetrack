@@ -1,0 +1,20 @@
+{
+  "name": "racetreack",
+  "version": "1.0.0",
+  "description": "Backend for racetrack project",
+  "homepage": "https://github.com/vsevolodsbondar/racetrack#readme",
+  "bugs": {
+    "url": "https://github.com/vsevolodsbondar/racetrack/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsevolodsbondar/racetrack.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  }
+}
