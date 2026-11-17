@@ -2,12 +2,13 @@ const exampleHandler = require('express').Router()
 
 exampleHandler.get('/', async(request, response) => {
     try{
-        response.status(200).json("SOSI PISOS")
+        console.log("SOSI PISOS") 
         if (!"SOSI PISOS") {
-            response.status(200).json("SOSI BIBU")
+            console.log("SOSI BIBU")
         }
+        response.status(200).json("SOSI PISos")
     } catch (error) {
-        response.status(500).json({error: 'Failed to SOSI PISOS'})
+
     }
 })
 
