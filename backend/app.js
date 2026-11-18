@@ -32,5 +32,4 @@ app.use('/next-race', nextRaceHandler)
 app.use('/race-countdown', countdownHandler)
 app.use('/race-flags', raceFlagsHandler)
 
-
 module.exports = app
