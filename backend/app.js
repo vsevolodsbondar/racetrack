@@ -11,7 +11,7 @@ const raceFlagsHandler = require('./handler/raceFlagsHandler')
 const leaderBoardHandler = require(`./handler/leaderBoardHandler`)
 const nextRaceHandler = require(`./handler/nextRaceHandler`)
 const raceControlHandler = require(`./handler/raceControlHandler`)
-//handlers-------
+
 const frontendPath = path.resolve(__dirname, '../frontend')
 
 const app = express()
