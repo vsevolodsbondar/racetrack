@@ -2,7 +2,7 @@ const exampleHandler = require('express').Router()
 
 exampleHandler.get('/', async(request, response) => {
     try{
-        console.log("SOSI PISOS") 
+        console.log("SOSI PISOS")
         if (!"SOSI PISOS") {
             console.log("SOSI BIBU")
         }
