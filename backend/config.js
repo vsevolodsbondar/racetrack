@@ -3,6 +3,10 @@ require('dotenv').config()
 //some config that was exported from .env file like secrets or config
 
 const PORT = process.env.PORT
+const RECEPTIONIST_KEY = process.env.RECEPTIONIST_KEY
+const OBSERVER_KEY = process.env.OBSERVER_KEY
+const SAFETY_KEY = process.env.SAFETY_KEY
+
 
 function checkAccessKeys() {
   const required = ['RECEPTIONIST_KEY', 'OBSERVER_KEY', 'SAFETY_KEY']
@@ -25,5 +29,9 @@ function duration() {
 
 module.exports = {
     PORT,
-    checkAccessKeys
+    SAFETY_KEY,
+    OBSERVER_KEY,
+    RECEPTIONIST_KEY,
+    checkAccessKeys,
+    duration
 }
