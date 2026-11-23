@@ -3,7 +3,7 @@ const path = require('path')
 const frontDeskHandler = require('express').Router()
 const frontDeskHtml = path.resolve(
     __dirname,
-    '../../frontend/front_desk.html'
+    '../../frontend/frontDesk.html'
 )
 
 frontDeskHandler.get('/', async(request, response) => {
