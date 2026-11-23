@@ -1,7 +1,6 @@
 const fs = require('fs/promises')
 const path = require('path')
 const frontDeskHandler = require('express').Router()
-const authMiddleware = require("../middleware/auth.js")
 const frontDeskHtml = path.resolve(
     __dirname,
     '../../frontend/front_desk.html'
