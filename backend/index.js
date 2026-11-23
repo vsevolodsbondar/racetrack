@@ -1,15 +1,11 @@
 const app = require('./app')
 const config = require('./config')
 const http = require('http')
-const checkAccessKeys = require('./helpers/access_key_check.js')
-const duration = require('./helpers/raceDuration.js')
-const {initSocket} = require('./socket/index.js')
+const { initSocket } = require('./socket/index.js')
 
 //check if there are accesskeys set as env vars
-//test keys: receptionist_key=123 observer_key=123 safety_key=123
-checkAccessKeys()
-duration()
-
+config.checkAccessKeys()
+config.duration()
 
 const server = http.createServer(app)
 

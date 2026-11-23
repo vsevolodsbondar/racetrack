@@ -129,7 +129,7 @@ Driver actions require a success acknowledgement callback (`reply`). It receives
 `{ car, name }` or `{}` after deletion. On failure, the server sends `action.error`
 with `{ message }` only to the requester and does not call the success callback.
 Invalid driver actions leave state unchanged and do not broadcast. Session creation/deletion
-have no acknowledgement. See [Sessions and Front Desk](sessions.md).
+have no acknowledgement.
 
 `broadcastState(io)` sends to `/`, `/front-desk`, `/race-control`, and `/lap-line-tracker`.
 Front Desk also triggers a broadcast on connection to load existing sessions.
@@ -147,7 +147,7 @@ Front Desk also triggers a broadcast on connection to load existing sessions.
 
 ## 4. Authentication
 
-- [x] Each employee page has its **own Socket.IO namespace**:
+- [ ] Each employee page has its **own Socket.IO namespace**:
 
 | Page             | Namespace           | Role         | Key                |
 | ---------------- | ------------------- | ------------ | ------------------ |
@@ -156,16 +156,16 @@ Front Desk also triggers a broadcast on connection to load existing sessions.
 | lap-line-tracker | `/lap-line-tracker` | observer     | `OBSERVER_KEY`     |
 | public pages     | `/`                 | —            | no key             |
 
-- [x] The page connects with `io("/<page>", { auth: { key } })`.
+- [ ] The page connects with `io("/<page>", { auth: { key } })`.
   The namespace selects the role; clients do not send a role field.
   Valid keys are reused from per-page `sessionStorage`.
-- [x] The server checks the key in the namespace middleware (`np.use`) **before** the connection is accepted
-- [x] Wrong key → server waits **500ms**, then rejects with an error.
+- [ ] The server checks the key in the namespace middleware (`np.use`) **before** the connection is accepted
+- [ ] Wrong key → server waits **500ms**, then rejects with an error.
   The server error is `"the provided key is Invalid"`; the page catches `connect_error`,
   shows `"Incorrect Access Key"` and asks again.
-- [x] Authentication setup runs once per client socket (`once("connect", ...)`),
+- [ ] Authentication setup runs once per client socket (`once("connect", ...)`),
   so automatic reconnection keeps existing page listeners without registering them again.
-- [x] **Permissions come from the namespace:** each namespace only has its own handlers.
+- [ ] **Permissions come from the namespace:** each namespace only has its own handlers.
 
 | Namespace           | Handlers                                   |
 | ------------------- | ------------------------------------------ |
@@ -176,7 +176,7 @@ Front Desk also triggers a broadcast on connection to load existing sessions.
 
 Nobody can send `race.start` without the key, because the handler doesn't exist in `/`.
 
-- [x] `broadcastState` sends `state` to **all** namespaces (list in `src/state.js`)
+- [ ] `broadcastState` sends `state` to **all** namespaces (list in `src/state.js`)
 - [ ] Every namespace sends `state` on connect. Currently `/` and `/race-control`
   send directly; `/front-desk` triggers a broadcast. Initial state for `/lap-line-tracker`
   remains to be implemented.
@@ -197,7 +197,7 @@ Nobody can send `race.start` without the key, because the handler doesn't exist 
 
 | File                            | Owner             | What's inside                                                               |
 | ------------------------------- | ----------------- | --------------------------------------------------------------------------- |
-| `server.js`                     | together          | express, Socket.IO, routes, connects the modules below                      |
+| `app.js`                     | together          | express, Socket.IO, routes, connects the modules below                      |
 | `config.js`                     | together          | `--dev` flag, race duration, access keys                                    |
 | `src/state.js`                  | together          | the `state` object + `broadcastState()` (adds `remainingMs`, sends `state`) |
 | `src/authenticate.js`           | A                 | employee namespace key middleware                                           |

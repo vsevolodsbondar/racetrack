@@ -1,3 +1,5 @@
+import authenticate from './auth/auth.js'
+
 //socket created
 
 const reg = document.createElement("div")
@@ -13,3 +15,18 @@ socket.on('connect', () => {
     console.log('front desk connected on socket:', socket.id)
     socket.emit('join_room', 'front-desk')
 })
+
+
+async function enterDesk(){
+    const sessionsDiv = document.createElement("div")
+    sessionsDiv.classList.add("front-desk")
+
+    document.body.append(sessionsDiv)
+
+    await authenticate("front-desk")
+
+    const deskList = document.createElement("ul")
+    sessionsDiv.append(deskList)
+}
+
+enterDesk()
