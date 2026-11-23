@@ -2,10 +2,10 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
-const exampleHandler = require('./handler/exampleHandler')
 const countdownHandler = require(`./handler/countdownHandler`)
 const frontendPath = path.resolve(__dirname, '../frontend')
 const frontDeskHandler = require('./handler/frontDeskHandler')
+const authHandler = require('./handler/authHandler')
 
 const app = express()
 
@@ -16,8 +16,8 @@ app.use(cors())
 
 //logging
 app.use(morgan('tiny'))
-app.use('/api/example', exampleHandler)
 app.use('/race-countdown', countdownHandler)
 app.use('/front-desk', frontDeskHandler)
+app.use('/auth', authHandler)
 
 module.exports = app

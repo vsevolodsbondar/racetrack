@@ -27,6 +27,7 @@ function duration() {
   }
 }
 
+
 module.exports = {
     PORT,
     SAFETY_KEY,

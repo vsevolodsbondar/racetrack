@@ -1,4 +1,4 @@
-import authenticate from './auth.js'
+import authenticate from './auth/auth.js'
 
 async function enterDesk(){
     const sessionsDiv = document.createElement("div")

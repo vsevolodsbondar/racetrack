@@ -17,14 +17,4 @@ frontDeskHandler.get('/', async(request, response) => {
     }
 })
 
-frontDeskHandler.post('/', authMiddleware, async(request, response) => {
-    try{
-        const html = await fs.readFile(frontDeskHtml, 'utf-8')
-
-        response.status(200).type('html').send(html)
-    } catch (error) {
-        response.status(500).json({error: 'Server error.'})
-    }
-})
-
 module.exports = frontDeskHandler
