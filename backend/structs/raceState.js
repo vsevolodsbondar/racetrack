@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const RACE_STATUS = Object.freeze({
     RUNNING: "running", //Timer is going, laps are counted
     FINNISHED: "finnished", //Finish mode, cars are returning, laps are still counted
@@ -16,8 +18,8 @@ class RaceState {
     raceSessions = [] // array of RaceSession obj
     race = null //curr Race obj
 
-    initiateRace(raceSession) {
-        this.race = new Race(raceSession)
+    initiateRace() {
+        this.race = new Race(uuidv4())
     }
 
     endRace() {
@@ -36,16 +38,26 @@ class RaceSession {
 }
 
 class Driver {
+    laps // map with driver's lap stats
+    lapsFinnished = 0
+
     constructor(carNumber, driverName) {
         this.carNumber = carNumber
         this.driverName = driverName
+        this.laps = new Map()
     }
+
+    registerFinnishLineCrossing() {
+        if (this.lapsFinnished === 0) {
+
+        }
+    }   
 }
 
 class Race {
     raceSession // RaceSession obj
-    raceStatus = RACE_STATUS.ENDED// RaceStatus "enum"
-    raceFlag = RACE_FLAG_STATE.DANGER //RaceFlagSate obj
+    raceStatus = RACE_STATUS.ENDED // RaceStatus "enum"
+    raceFlag = RACE_FLAG_STATE.DANGER // RaceFlagSate "enum"
     endsAt = null // server time (ms) when the timer ends
     laps = new Map() //map with lap obj starts with 1:
 
@@ -77,10 +89,9 @@ class Race {
 }
 
 class Lap {
-    constructor(lapCount) {
-        this.lapCount = lapCount // number of finnished laps
-        this.lastLapCrossedAt = null // timestamp of the crossing of the last lap
-        this.fastestLapMs = null // best result of the lap
+    constructor(lapNumber) {
+        this.lapNumber = lapNumber // number of finnished laps
+        this.crossedAt = null // timestamp of the crossing of the last lap
     }
 }
 
