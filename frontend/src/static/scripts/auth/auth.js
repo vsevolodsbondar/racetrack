@@ -22,7 +22,13 @@ export default function authenticate(accessRoute) {
                 })
 
                 if (!response.ok) {
-                    console.log("Authentication failed. Try again.")
+                    const authErrMsg = document.querySelector("#authErrMsg")
+                    authErrMsg.style.opacity = 1
+
+                    setTimeout(()=> {
+                        authErrMsg.style.opacity = 0
+                    }, 2000)
+                    
                     return
                 }
 
