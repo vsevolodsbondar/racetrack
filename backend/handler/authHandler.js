@@ -15,7 +15,7 @@ authHandler.post('/', async (request, response) => {
         if (!validateKeys(accessKey,accessRoute)) {
             await sleep(500)
 
-            response.status(401).json({})
+            response.status(401).json({error: "Wrong accessKey."})
         } else {
             response.status(202).json({})
         }
