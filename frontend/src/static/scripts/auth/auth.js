@@ -24,11 +24,13 @@ export default function authenticate(accessRoute) {
                 if (!response.ok) {
                     const authErrMsg = document.querySelector("#authErrMsg")
                     authErrMsg.style.opacity = 1
+                    authErrMsg.textContent = "Authentification failed. Try again."
 
                     setTimeout(()=> {
                         authErrMsg.style.opacity = 0
+                        authErrMsg.textContent = null
                     }, 2000)
-                    
+
                     return
                 }
 

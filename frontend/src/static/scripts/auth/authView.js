@@ -23,7 +23,6 @@ export default function createForm() {
 
     const errMsg = document.createElement("div")
     errMsg.id = "authErrMsg"
-    errMsg.textContent = "Authentification failed. Try again."
     errMsg.style.opacity = 0
 
     form.append(label, input, inputButton, errMsg)
