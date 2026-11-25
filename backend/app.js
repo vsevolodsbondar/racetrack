@@ -12,7 +12,6 @@ const nextRaceHandler = require(`./handler/nextRaceHandler`)
 const raceControlHandler = require(`./handler/raceControlHandler`)
 
 const frontendPath = path.resolve(__dirname, '../frontend')
-const frontDeskHandler = require('./handler/frontDeskHandler')
 const authHandler = require('./handler/authHandler')
 
 const app = express()
