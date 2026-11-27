@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+const { v4: uuidv4 } = require('uuid')
 
 const RACE_DURATIONS = Object.freeze({
     SHORT_RACE_MS: 60000,
@@ -45,7 +45,7 @@ class RaceState {
         if (this.currentRace.raceStatus != RACE_STATUS.FINISHING) return false
 
         for (const driver of this.currentRace.drivers.values()) {
-            // if driver never crossed starting line 
+            // if driver never crossed starting line
             if (driver.currentLap === null) {
                 driver.finishedAt = "NOT STARTED."
             }
@@ -55,7 +55,7 @@ class RaceState {
                 return false
             }
         }
-        
+
         this.passedRaces.push(this.currentRace)
         this.currentRace = null
 
@@ -240,4 +240,18 @@ class Lap {
         this.crossedAt = crossedAt
         this.durationMs = crossedAt - this.startedAt
     }
+}
+
+
+const raceState = new RaceState()
+
+module.exports = {
+    raceState,
+    RaceState,
+    Race,
+    Driver,
+    Lap,
+    RACE_DURATIONS,
+    RACE_STATUS,
+    RACE_FLAG_STATE
 }
